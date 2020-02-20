@@ -449,3 +449,46 @@ console.log(zip(['a', 'b'], [1, 2], [true, false]))
 // => [['a', 1, true], ['b', 2, false]]
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// will return an array, length determined by passed in value
+// array starts at one and each value increments by one,
+// however, if the number is divisible by 3 and 5 replace number with FIZZBUZZ
+// if number is divisible by 3 return FIZZ
+// if number is divisible by 5 return BUZZ
+
+const fizzBuzz = (num) => {
+    const output = [];
+    for (let i=1; i<num + 1; i++) {
+        if ((i % 3 === 0) && (i % 5 === 0)) {
+        	output.push('FIZZBUZZ')
+        } else if (i % 3 === 0) {
+            output.push('FIZZ')
+        } else if (i % 5 === 0) {
+            output.push('BUZZ')
+        } else {
+            output.push(i)
+        }
+    }
+    return output;
+}
+
+console.log(fizzBuzz(15));
+/*
+[ 1,
+  2, 
+  'FIZZ',
+  4, 
+  'BUZZ',
+  'FIZZ',
+  7,
+  8,
+  'FIZZ',
+  'BUZZ',
+  11,
+  'FIZZ',
+  13,
+  14,
+  'FIZZBUZZ' ]
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */

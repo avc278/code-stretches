@@ -340,3 +340,34 @@ console.log(zip(['a', 'b'], [1, 2], [true, false]))
 // => [['a', 1, true], ['b', 2, false]]
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// will return an array, length determined by passed in value
+// array starts at one and each value increments by one,
+// however, if the number is divisible by 3 and 5 replace number with FIZZBUZZ
+// if number is divisible by 3 return FIZZ
+// if number is divisible by 5 return BUZZ
+
+const fizzBuzz = () => {
+
+}
+
+console.log(fizzBuzz(15));
+/*
+[ 1,
+  2, 
+  'FIZZ',
+  4, 
+  'BUZZ',
+  'FIZZ',
+  7,
+  8,
+  'FIZZ',
+  'BUZZ',
+  11,
+  'FIZZ',
+  13,
+  14,
+  'FIZZBUZZ' ]
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
