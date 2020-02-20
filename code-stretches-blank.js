@@ -2,7 +2,7 @@
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 // Write a function called invert.
-// This function takes in an obj, and returns an object whose key/value pairs are swapped
+// This function takes in an obj, and returns an object whose key/value pairs are swapped.
 
 const invert = () => {
 
@@ -10,6 +10,7 @@ const invert = () => {
 
 invert({x: 'foo', y: 3})
 // {3: 'y', foo: 'x'}
+
 invert({hello: 'world', bazz: 19})
 // {19: 'bazz', world: 'hello'}
 
@@ -23,17 +24,18 @@ const sumValues = () => {
 };
 
 console.log(sumValues({ foo: 1, bar: 2, bazz: 'whatever'}));
-//3
+// 3
+
 console.log(sumValues({}));
-//0
+// 0
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 // Write a function, intersect, that takes in two arrays,
-// and returns an array populated by elements that are in both input arrays
+// and returns an array populated by elements that are in both input arrays.
 
 const intersect = () => {
-    
+
 }
 
 const x = [1, 2, 3];
@@ -46,9 +48,9 @@ console.log(intersect(x, y))
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
-// isMatch takes two objects
-// if the first object has all the properties of the second object return true
-// otherwise return false
+// isMatch takes two objects.
+// If the first object has all the properties of the second object return true,
+// otherwise return false.
 
 const isMatch = () => {
 
@@ -56,14 +58,21 @@ const isMatch = () => {
 
 isMatch({ foo: true, bar: 1}, { foo: true });
 // true
+
 isMatch({ foo: 42, bazz: 19}, {});
 // true
+
 isMatch({ foo: 42, bazz: 11}, { foo: 43 });
 // false
+
 isMatch({ }, { foo: 11 });
 // false
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// multiMult is a function that takes any number of arguments and returns a function.
+// The returned function takes a number,
+// and returns the product of that number and the arguments passed in to multiMult.
 
 const multiMult = () => {  
 
@@ -72,11 +81,15 @@ const multiMult = () => {
 const m5 = multiMult(5);
 console.log(m5(4));
 // 20
+
 const m5_6 = multiMult(5, 6);
 console.log(m5_6(3));
 // 90
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// timer is a function that takes a number in seconds, and returns a function.
+// The returned function performs a delayed action by the number of seconds initially passed in.
 
 const timer = () => {
 
@@ -84,19 +97,24 @@ const timer = () => {
 
 const t1= timer(2);
 t1(() => console.log('2 sec'));
+// This appears on the screen 2 seconds after called.
+
 t1(() => console.log('2 sec'));
+// This appears on the screen 2 seconds after called.
 
 const t2 = timer(.5);
 t2(() => console.log('.5 sec'));
+// This appears on the screen 0.5 seconds after called.
 
 const t3 = timer(0);
 t3(() => console.log('0 sec'));
+// This appears on the screen 0 seconds after called.
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 // get passed an array and an object
 // filter objects in array that have all the properties of the second argument
-// note an object can have extra properties
+// note: an object can have extra properties
 
 const fuzzyFilter = () => {
 
@@ -107,6 +125,7 @@ console.log(fuzzyFilter([ { foo: 'bar', x: 3},
                           { foo: 'ba', y: 1} ],
                         { foo: 'bar' }));
 // [ { foo: 'bar', x: 3 }, { foo: 'bar' } ]
+
 console.log(fuzzyFilter([ { foo: 'bar', x: 3},
                           { foo: 'bar'},
                           { foo: 'bar', y: 1} ],
@@ -143,27 +162,35 @@ console.log(a3[0] === a3[1])
 // randomList is passed an array and a count
 // it returns an array of values chosen randomly from list with no duplicates
 
-
 const randomList = () => {
 
 }
 
 console.log(randomList([1,2,3], 2));
 // random choice of two like [1,2] [3,1] [2,1]
+
 console.log(randomList(['foo', 'bar', 'bazz', 'quq'], 2));
 // random choice of two
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
+// getVowels takes in a string and returns a non-repeating array of the vowels in the string
+
 const getVowels = () => {
 
 }
+
 console.log(getVowels('Fullstack Academy'))
 // ['u', 'a', 'e']
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
-const processor = () => {
+// processor takes in parentList, childList, listName, primaryKey, foreignKey
+// processor iterates through the parentList and adds listName as a key to each object in the parentList
+// listName will have an array as its value populated by objects
+// from the childList whose foreignKey matches the primaryKey from parentList
+
+const processor = (parentList, childList, listName, primaryKey, foreignKey) => {
 
 }
 
@@ -212,11 +239,16 @@ console.log(JSON.stringify(processed, null, 2));
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
+// objFromArray takes in an array and returns an object,
+// where the returned object is populated with keys from the odd elements in the array
+// and values from the even elements in the array
+
 const objFromArray = () => {
 };
 
 console.log(objFromArray(['foo', 2, 'bar', 4]))
 // { foo: 2, bar: 4 }
+
 console.log(objFromArray([1, 2, 3, 4, 5, 6]))
 // { '1': 2, '3': 4, '5': 6 }
 
@@ -231,9 +263,10 @@ const removeOdd = () => {
 const arr = [1, 3, 5, 8, 10, 41];
 
 console.log(removeOdd(arr));
-//4
+// 4
+
 console.log(arr);
-//[8, 10]
+// [8, 10]
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
@@ -247,14 +280,19 @@ const objContainsString = () => {
 
 console.log(objContainsString({ x: 'Foo', b: 'bare' }, 'foo'));
 // true
+
 console.log(objContainsString({ x: 'Foo', b: 'bare' }, 'bar'));
 // true
+
 console.log(objContainsString({ one: 'Foo', two: 'bare' }, 'bazz'));
 // false
+
 console.log(objContainsString({ }, 'whatever'));
 // false
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// A function that groups items in an array
 
 const group = () => {
 
@@ -274,12 +312,13 @@ const data = [
       id: 8
     }
   ];
-  
+
 console.log(group(data, 'name'));
 /*
 { foo: [ { name: 'foo', id: 7 }, { name:'foo', id: 8 } ],
 bar: [ { name: 'bar', id: 8 } ] }
 */
+
 console.log(group(data, 'id'));
 /*
 { '7': [ { name: 'foo', id: 7 } ],
