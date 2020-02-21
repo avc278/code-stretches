@@ -339,6 +339,9 @@ function zip() {
 console.log(zip(['a', 'b'], [1, 2], [true, false]))
 // => [['a', 1, true], ['b', 2, false]]
 
+console.log(zip([]))
+// => []
+
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 // will return an array, length determined by passed in value

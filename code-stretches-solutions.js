@@ -427,26 +427,22 @@ console.log(group(data, 'id'));
 // the second of which contains the second elements of the given arrays, and so on.
 // accepts any number of arrays
 
-function zip() {
-	const args = Array.from(arguments);
-	const output = [];
-
-  	// this assumes that all arrays passed in to zip are of the same length
-  	// we can just iterate through the length of the first array
-    // to create empty arrays that we will populate later
-	for (let i=0; i<args[0].length; i++) {
-        output.push([]);
-    }
-    for (let i=0; i<output.length; i++) {
-        for (let j=0; j<args.length; j++) {
-            output[i].push((args[j][i]))
-        }
-    }
-  	return output;
-}
+const zip = (...arr) => {
+    const results = [];
+    arr.forEach( list => {
+        list.forEach((item, idx) => {
+            results[idx] = results[idx] || [];
+            results[idx].push(item);
+        });
+    });
+    return results;
+};
 
 console.log(zip(['a', 'b'], [1, 2], [true, false]))
 // => [['a', 1, true], ['b', 2, false]]
+
+console.log(zip([]))
+// => []
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
