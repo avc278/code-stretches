@@ -493,7 +493,6 @@ console.log(fizzBuzz(15));
 
 const pick = (obj, arr) => {
     const output = {};
-    const keys = Object.keys(obj);
     arr.forEach( el => {
         if (obj[el] !== undefined) {
             output[el] = obj[el];
