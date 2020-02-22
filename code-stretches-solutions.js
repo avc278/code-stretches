@@ -488,3 +488,28 @@ console.log(fizzBuzz(15));
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// Creates an object composed of the picked object properties.
+
+const pick = (obj, arr) => {
+    const output = {};
+    const keys = Object.keys(obj);
+    arr.forEach( el => {
+        if (obj[el] !== undefined) {
+            output[el] = obj[el];
+        } else {
+            output[el] = undefined;
+        }
+    });
+    return output;
+}
+
+var object = { 'a': 1, 'b': '2', 'c': 3 };
+
+pick(object, ['a', 'c'])
+// => { 'a': 1, 'c': 3 }
+
+pick(object, ['d']);
+// => { d: undefined}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
