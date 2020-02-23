@@ -512,3 +512,35 @@ pick(object, ['d']);
 // => { d: undefined}
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const average = (arr, key) => {
+    let counter = 0;
+    const total = arr.reduce((acc, obj) => {
+        // we should not assume that each obj in the array has the key
+        // and we should not assume that each value is a number should the object have the key
+        if (obj[key] !== undefined && typeof obj[key] === 'number') {
+            counter++;
+            return acc + obj[key];
+        }
+        return acc;
+    }, 0);
+    return total / counter;
+};
+
+const testScores = [
+    { id: 1, score: 80 },
+    { id: 2, score: 90 },
+    { id: 3, score: 100 }
+];
+average(testScores, 'score');
+// 90
+
+const otherTestScores = [
+    { id: 1, total: 80 },
+    { id: 2, total: 60 },
+    { id: 3, total: 100 }
+];
+average(otherTestScores, 'total');
+// 80
+
+/* ------------------------------------------------------------------------------------------------------------------ */
