@@ -414,9 +414,34 @@ average(otherTestScores, 'total');
 
 const multString = () => {
 
+}
+
 console.log(multString('2, 5, 3'));
 // 30
+
 console.log(multString('2, 2, 2'));
 // 8
+
+// Bonus
+console.log(multString('yo, hi, 3'));
+//3
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// passed in string, counts occurences of each letter
+
+const letterCounter = () => {
+
+}
+
+console.log(letterCounter('abc'));
+// { a: 1, b: 1, c: 1 }
+
+console.log(letterCounter('foobarbazz'));
+// { f: 1, o: 2, b: 2, a: 2, r: 1, z: 2 }
+
+// Bonus
+console.log(letterCounter('123'));
+// {}
 
 /* ------------------------------------------------------------------------------------------------------------------ */
