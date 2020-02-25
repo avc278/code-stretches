@@ -599,3 +599,20 @@ console.log(letterCounter('123'));
 // {}
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const delay = (ms, str) => {
+    // the goal here is to pass in milliseconds and a string into delay()
+    // which returns a Promise.
+    // We can then chain on that promise with a .then statement
+    return new Promise(function(resolve) {
+        setTimeout( function() {
+            resolve(str)
+        }, ms)
+    })
+}
+
+delay(1000, 'foo')
+  .then((result) => console.log(result));
+// logs foo in half a second
+
+/* ------------------------------------------------------------------------------------------------------------------ */
