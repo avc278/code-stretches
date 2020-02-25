@@ -455,3 +455,21 @@ delay(1000, 'foo')
 // logs foo in half a second
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// you cannot use the array reduce method within reduce
+
+const reduce = () => {
+
+};
+
+console.log(reduce([1, 2, 3], (acc, item)=> {
+    return item * acc;
+}, 2));
+// 12
+
+console.log(reduce([1, 2, 3, 4], (acc, item)=> {
+    return item * acc;
+}, 10));
+// 240
+
+/* ------------------------------------------------------------------------------------------------------------------ */

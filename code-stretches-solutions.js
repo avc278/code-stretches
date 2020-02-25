@@ -616,3 +616,24 @@ delay(1000, 'foo')
 // logs foo in half a second
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// you cannot use the array reduce method within reduce
+
+const reduce = (arr, func, start) => {
+    for (let i=0; i<arr.length; i++) {
+        start = func(start, arr[i]);
+    };
+    return start;
+};
+
+console.log(reduce([1, 2, 3], (acc, item)=> {
+    return item * acc;
+}, 2));
+// 12
+
+console.log(reduce([1, 2, 3, 4], (acc, item)=> {
+    return item * acc;
+}, 10));
+// 240
+
+/* ------------------------------------------------------------------------------------------------------------------ */
