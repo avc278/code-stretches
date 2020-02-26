@@ -551,17 +551,22 @@ average(otherTestScores, 'total');
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 const multString = (str) => {
-    const arr = str.split(',');
-    return arr.reduce((prod, el) => {
-        // we cannot assume that all elements we convert to numbers will actually be numbers
-        const intEl = parseInt(el, 10);
-        // so we only multiply the product by the number casted element if it is a number and not NaN
-        if ((typeof intEl === 'number') && (!Number.isNaN(intEl))) {
-            return prod *= intEl;
-        } else {
-            return prod;
-        }
+    // javascript is very nice and will convert numbers for us
+    return str.split(',').reduce( (acc, value) => {
+        return acc * value;
     }, 1);
+
+    // const arr = str.split(',');
+    // return arr.reduce((prod, el) => {
+    //     // we cannot assume that all elements we convert to numbers will actually be numbers
+    //     const intEl = parseInt(el, 10);
+    //     // so we only multiply the product by the number casted element if it is a number and not NaN
+    //     if ((typeof intEl === 'number') && (!Number.isNaN(intEl))) {
+    //         return prod *= intEl;
+    //     } else {
+    //         return prod;
+    //     }
+    // }, 1);
 };
 
 console.log(multString('2, 5, 3'));
