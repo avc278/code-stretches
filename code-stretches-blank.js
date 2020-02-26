@@ -450,7 +450,7 @@ const delay = () => {
 
 }
 
-delay(1000, 'foo')
+delay(500, 'foo')
   .then((result) => console.log(result));
 // logs foo in half a second
 

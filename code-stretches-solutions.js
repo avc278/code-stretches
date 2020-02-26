@@ -491,16 +491,21 @@ console.log(fizzBuzz(15));
 
 // Creates an object composed of the picked object properties.
 
-const pick = (obj, arr) => {
-    const output = {};
-    arr.forEach( el => {
-        if (obj[el] !== undefined) {
-            output[el] = obj[el];
-        } else {
-            output[el] = undefined;
-        }
-    });
-    return output;
+const pick = (obj, keys) => {
+    return keys.reduce( (acc, key) => {
+        acc[key] = obj[key];
+        return acc;
+    }, {});
+    
+    // const output = {};
+    // arr.forEach( el => {
+    //     if (obj[el] !== undefined) {
+    //         output[el] = obj[el];
+    //     } else {
+    //         output[el] = undefined;
+    //     }
+    // });
+    // return output;
 }
 
 var object = { 'a': 1, 'b': '2', 'c': 3 };
@@ -601,29 +606,40 @@ console.log(letterCounter('123'));
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 const delay = (ms, str) => {
-    // the goal here is to pass in milliseconds and a string into delay()
-    // which returns a Promise.
-    // We can then chain on that promise with a .then statement
-    return new Promise(function(resolve) {
-        setTimeout( function() {
+    return new Promise((resolve) => {
+        setTimeout( () => {
             resolve(str)
-        }, ms)
-    })
-}
+        }, ms);
+    });
+};
 
-delay(1000, 'foo')
+const delayFail = (ms, str) => {
+    return new Promise((resolve, reject) => {
+        setTimeout( () => {
+            reject(str);
+        }, ms);
+    });
+};
+
+delay(500, 'foo')
   .then((result) => console.log(result));
 // logs foo in half a second
+
+delayFail(1000, 'bar')
+  .catch( ex => console.log(ex));
+// logs bar in a second
+
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 // you cannot use the array reduce method within reduce
 
 const reduce = (arr, func, start) => {
-    for (let i=0; i<arr.length; i++) {
-        start = func(start, arr[i]);
-    };
-    return start;
+    let returnValue = start;
+    arr.forEach( val => {
+        returnValue = func(returnValue, val)
+    });
+    return returnValue;
 };
 
 console.log(reduce([1, 2, 3], (acc, item)=> {
