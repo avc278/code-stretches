@@ -580,17 +580,23 @@ console.log(multString('yo, hi, 3'));
 
 const letters = 'abcdefghijklmnopqrstuvwxyz';
 const letterCounter = str => {
-    return str.split('').reduce( (freq, letter) => {
-        // we only want to add to the frequency object if we reach a letter
-        if (letters.includes(letter)) {
-            if (freq[letter] === undefined) {
-                freq[letter] = 1;
-            } else {
-                freq[letter]++;
-            };
-        };
-        return freq;
-    }, {});
+    return str.split('').reduce( (acc, letter) => {
+        acc[letter] = acc[letter] || 0;
+        acc[letter]++;
+        return acc;
+    }, {})
+
+    // return str.split('').reduce( (freq, letter) => {
+    //     // we only want to add to the frequency object if we reach a letter
+    //     if (letters.includes(letter)) {
+    //         if (freq[letter] === undefined) {
+    //             freq[letter] = 1;
+    //         } else {
+    //             freq[letter]++;
+    //         };
+    //     };
+    //     return freq;
+    // }, {});
 };
 
 console.log(letterCounter('abc'));
