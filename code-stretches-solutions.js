@@ -664,3 +664,32 @@ console.log(reduce([1, 2, 3, 4], (acc, item)=> {
 // 240
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const mostPopularLetter = (str) => {
+    const counter = str.split('').reduce( (acc, letter) => {
+        acc[letter] = acc[letter] || 0;
+        acc[letter]++;
+        return acc;
+    }, {});
+
+    let popularLetter = '';
+    let popularLetterCount = 0;
+    Object.keys(counter).map( (key) => {
+        if (counter[key] > popularLetterCount) {
+            popularLetterCount = counter[key];
+            popularLetter = key;
+        };
+    });
+    return popularLetter;
+};
+
+console.log(mostPopularLetter('foo'));
+// o
+
+console.log(mostPopularLetter('foobarbazbz'));
+// b
+
+console.log(mostPopularLetter(''));
+// undefined
+
+/* ------------------------------------------------------------------------------------------------------------------ */

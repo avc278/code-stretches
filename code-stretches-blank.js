@@ -473,3 +473,18 @@ console.log(reduce([1, 2, 3, 4], (acc, item)=> {
 // 240
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const mostPopularLetter = () => {
+
+};
+
+console.log(mostPopularLetter('foo'));
+// o
+
+console.log(mostPopularLetter('foobarbazbz'));
+// b
+
+console.log(mostPopularLetter(''));
+// undefined
+
+/* ------------------------------------------------------------------------------------------------------------------ */
