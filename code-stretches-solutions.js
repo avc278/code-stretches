@@ -236,7 +236,7 @@ const getVowels = (word) => {
                 acc[ltr] = true;
             }
             return acc;
-        }, {}));
+        }, []));
 }
 
 console.log(getVowels('Fullstack Academy'))
@@ -691,5 +691,28 @@ console.log(mostPopularLetter('foobarbazbz'));
 
 console.log(mostPopularLetter(''));
 // undefined
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+const group = (arr, fn) => {
+	return arr.reduce( (acc, el) => {
+        let category = fn(el);
+        acc[category] = acc[category] || [];
+        acc[category].push(el);
+        return acc;
+    }, {});
+};
+
+let grouped = group([1, 2, 3], (i)=> i % 2 ? 'odd' : 'even');
+console.log(grouped);
+// { odd: [ 1, 3 ] , even: [ 2 ] }
+
+grouped = group([1, 2, 3], (i)=> i >= 2 ? 'gte 2' : 'lt2');
+console.log(grouped);
+// { lt2: [ 1 ], 'gte 2': [ 2, 3 ] }
+
+grouped = group(['a', 'b', 1, 2, 3],(i) => typeof i === 'number' ? 'numbers' : 'not numbers');
+console.log(grouped);
+// { 'not numbers': [ 'a', 'b' ], numbers: [ 1, 2, 3 ] }
 
 /* ------------------------------------------------------------------------------------------------------------------ */
