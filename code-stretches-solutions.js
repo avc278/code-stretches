@@ -716,3 +716,24 @@ console.log(grouped);
 // { 'not numbers': [ 'a', 'b' ], numbers: [ 1, 2, 3 ] }
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const groupByDataType = arr => {
+    return arr.reduce( (output, el) => {
+        output[typeof el] = output[typeof el] || [];
+        output[typeof el].push(el);
+        return output;
+    }, {});
+}
+  
+console.log(groupByDataType([1, 2, 3]));
+// { number: [ 1, 2, 3 ] }
+
+console.log(groupByDataType([1, 'a', 'b', true, false, [], new Date(), true, {}]));
+/* { number: [ 1 ],
+    string: [ 'a', 'b' ],
+    boolean: [ true, false, true ],
+    object: [ [], 2020-03-03T20:54:30.720Z, {} ] } */
+// date will be current date!
+  
+/* ------------------------------------------------------------------------------------------------------------------ */
+  
