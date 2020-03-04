@@ -723,7 +723,7 @@ const groupByDataType = arr => {
         output[typeof el].push(el);
         return output;
     }, {});
-}
+};
   
 console.log(groupByDataType([1, 2, 3]));
 // { number: [ 1, 2, 3 ] }
@@ -736,4 +736,22 @@ console.log(groupByDataType([1, 'a', 'b', true, false, [], new Date(), true, {}]
 // date will be current date!
   
 /* ------------------------------------------------------------------------------------------------------------------ */
-  
+
+const size = (thing) => {
+    if (Array.isArray(thing)) {
+        return thing.length;
+    } else {
+        return Object.keys(thing).length;
+    };
+};
+
+console.log(size([1, 2, 3, 4, 5]));
+// 5
+
+console.log(size({one: 1, two: 2, three: 3}));
+// 3
+
+console.log(size({one: 1, two: 2, three: 3, foo: 'bar'}));
+// 4
+
+/* ------------------------------------------------------------------------------------------------------------------ */

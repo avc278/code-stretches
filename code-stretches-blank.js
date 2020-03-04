@@ -509,16 +509,31 @@ console.log(grouped);
 
 const groupByDataType = () => {
 
-}
+};
 
 console.log(groupByDataType([1, 2, 3]));
 // { number: [ 1, 2, 3 ] }
 
 console.log(groupByDataType([1, 'a', 'b', true, false, [], new Date(), true, {}]));
 /* { number: [ 1 ],
-  string: [ 'a', 'b' ],
-  boolean: [ true, false, true ],
-  object: [ [], 2020-03-03T20:54:30.720Z, {} ] } */
+    string: [ 'a', 'b' ],
+    boolean: [ true, false, true ],
+    object: [ [], 2020-03-03T20:54:30.720Z, {} ] } */
 // date will be current date!
+  
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+const size = () => {
+
+};
+
+console.log(size([1, 2, 3, 4, 5]));
+// 5
+
+console.log(size({one: 1, two: 2, three: 3}));
+// 3
+
+console.log(size({one: 1, two: 2, three: 3, foo: 'bar'}));
+// 4
 
 /* ------------------------------------------------------------------------------------------------------------------ */
