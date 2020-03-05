@@ -776,3 +776,18 @@ console.log(partition([1, 'a', 'b', 2, 3, 4], (x)=> typeof x === 'string'));
 // [ [ 'a', 'b' ], [ 1, 2, 3, 4 ] ]
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const pluck = (arr, key) => {
+    return arr.reduce( (acc, obj) => {
+		if (obj[key]) {
+            acc.push(obj[key]);
+        };
+        return acc;
+    }, []);
+};
+
+const stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+console.log(pluck(stooges, 'name'));
+// [ 'moe', 'larry', 'curly' ]
+
+/* ------------------------------------------------------------------------------------------------------------------ */
