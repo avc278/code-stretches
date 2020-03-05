@@ -561,3 +561,15 @@ console.log(pluck(stooges, 'name'));
 // [ 'moe', 'larry', 'curly' ]
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// receives an array and returns an object
+// all array's are grouped with key array and everything else is grouped under other
+
+const separate = () => {
+
+};
+
+console.log(separate([{},1, [1, 2], ['a'], {}]));
+// { arrays: [ [ 1, 2 ], [ 'a' ] ], other: [ {}, 1, {} ] }
+
+/* ------------------------------------------------------------------------------------------------------------------ */
