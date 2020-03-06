@@ -586,3 +586,24 @@ console.log(daysFromNow(new Date('07/04/2020')));
 // logs days from now
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// isMatch returns true if the first object has all the same keys and values of second object
+// note the first object can have extra properties, yet still return true
+
+const isMatch = () => {
+
+};
+
+console.log(isMatch({}, {x: 1}));
+// false
+
+console.log(isMatch({x: 1, y: 2}, {x: 1}));
+// true
+
+console.log(isMatch({x: 1, y: 2, z: 3}, {x: 1, y: 2}));
+// true
+
+console.log(isMatch({x: 1, y: 2, z: 3}, {x: 1, y: 1}));
+// false
+
+/* ------------------------------------------------------------------------------------------------------------------ */
