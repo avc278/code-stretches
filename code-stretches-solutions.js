@@ -806,3 +806,19 @@ console.log(separate([{},1, [1, 2], ['a'], {}]));
 // { arrays: [ [ 1, 2 ], [ 'a' ] ], other: [ {}, 1, {} ] }
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// you can round up or down to the closest number of days
+// a date in future should return a positive number
+// a date in the past should return a negative number
+
+const daysFromNow = (day) => {
+	const today = new Date();
+    const msInADay = 1000 * 60 * 60 * 24;
+    const diff = Math.round((day - today) / msInADay);
+    return diff;
+}
+
+console.log(daysFromNow(new Date('07/04/2020')));
+// logs days from now
+
+/* ------------------------------------------------------------------------------------------------------------------ */
