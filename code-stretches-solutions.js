@@ -863,3 +863,17 @@ console.log(letterCounter('abcdefhi a b c'));
 // { a: 2, b: 2, c: 2, d: 1, e: 1, f: 1, h:1, i: 1, ' ': 3 }
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const uniqueConsonant = str => {
+    return str.split('').reduce( (acc, curr) => {
+        if (!acc.includes(curr) && !'aeiou'.includes(curr)) {
+            acc.push(curr);
+        };
+        return acc;
+    }, []);
+};
+
+console.log(uniqueConsonant('abacub'));
+// [ 'b', 'c' ]
+
+/* ------------------------------------------------------------------------------------------------------------------ */
