@@ -625,3 +625,21 @@ console.log(uniqueConsonant('abacub'));
 // [ 'b', 'c' ]
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const tempConvertor = () => {
+
+};
+
+console.log(tempConvertor({ degree: 32, scale: 'F'}));
+// { degree: 0, scale: 'C' }
+
+console.log(tempConvertor({ degree: 212, scale: 'F'}));
+// { degree: 100, scale: 'C' }
+
+console.log(tempConvertor({ degree: 0, scale: 'C'}));
+// { degree: 32, scale: 'F' }
+
+console.log(tempConvertor({ degree: 100, scale: 'C'}));
+// { degree: 212, scale: 'F' }
+
+/* ------------------------------------------------------------------------------------------------------------------ */

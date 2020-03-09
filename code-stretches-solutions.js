@@ -877,3 +877,30 @@ console.log(uniqueConsonant('abacub'));
 // [ 'b', 'c' ]
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const tempConvertor = (tempObj) => {
+    const { degree, scale } = tempObj;
+    const convertedTempObj = {};
+    if (scale === 'F') {
+        convertedTempObj.degree = ( (5/9) * ( degree - 32) );
+        convertedTempObj.scale = 'C';
+    } else if (scale === 'C') {
+        convertedTempObj.degree = ( ( (9/5) * degree) + 32);
+        convertedTempObj.scale = 'F';
+    };
+    return convertedTempObj;
+};
+
+console.log(tempConvertor({ degree: 32, scale: 'F'}));
+// { degree: 0, scale: 'C' }
+
+console.log(tempConvertor({ degree: 212, scale: 'F'}));
+// { degree: 100, scale: 'C' }
+
+console.log(tempConvertor({ degree: 0, scale: 'C'}));
+// { degree: 32, scale: 'F' }
+
+console.log(tempConvertor({ degree: 100, scale: 'C'}));
+// { degree: 212, scale: 'F' }
+
+/* ------------------------------------------------------------------------------------------------------------------ */
