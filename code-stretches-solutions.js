@@ -904,3 +904,47 @@ console.log(tempConvertor({ degree: 100, scale: 'C'}));
 // { degree: 212, scale: 'F' }
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const tempConvertorErrorHandling = tempObj => {
+    if (!['F', 'C'].includes(tempObj.scale) || typeof tempObj.degree !== 'number') {
+        throw('scale must be F or C');
+    };
+
+    if (tempObj.scale === 'F') {
+        const temp = (5/9) * (tempObj.degree - 32);
+        return { degree: temp, scale: 'C' };
+    } else if (tempObj.scale === 'C') {
+        const temp = ( (9/5) * tempObj.degree ) + 32;
+        return { degree: temp, scale: 'F' };
+    };
+};
+
+console.log(tempConvertorErrorHandling({ degree: 32, scale: 'F'}));
+// { degree: 0, scale: 'C' }
+
+console.log(tempConvertorErrorHandling({ degree: 212, scale: 'F'}));
+// { degree: 100, scale: 'C' }
+
+console.log(tempConvertorErrorHandling({ degree: 0, scale: 'C'}));
+// { degree: 32, scale: 'F' }
+
+console.log(tempConvertorErrorHandling({ degree: 100, scale: 'C'}));
+// { degree: 212, scale: 'F' }
+
+try {
+    console.log(tempConvertorErrorHandling({ degree: 100, scale: 'X'}));
+}
+catch(e){
+    console.log(e);
+}
+// scale must be F or C
+
+try {
+    console.log(tempConvertorErrorHandling({ degree: '32', scale: 'F'}));
+}
+catch(e){
+    console.log(e);
+}
+// scale must be F or C
+
+/* ------------------------------------------------------------------------------------------------------------------ */
