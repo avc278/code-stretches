@@ -677,3 +677,17 @@ catch(e){
 // scale must be F or C
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const rejectMeInCaps = () => {
+
+}
+
+rejectMeInCaps('foo')
+    .catch( result => console.log(result));
+// FOO
+
+rejectMeInCaps('bar')
+    .catch( result => console.log(result));
+// BAR
+
+/* ------------------------------------------------------------------------------------------------------------------ */

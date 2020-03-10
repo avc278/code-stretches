@@ -948,3 +948,17 @@ catch(e){
 // scale must be F or C
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const rejectMeInCaps = str => {
+    throw(str.toUpperCase());
+}
+
+rejectMeInCaps('foo')
+  .catch( result => console.log(result));
+// FOO
+
+rejectMeInCaps('bar')
+  .catch( result => console.log(result));
+// BAR
+
+/* ------------------------------------------------------------------------------------------------------------------ */
