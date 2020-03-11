@@ -962,3 +962,19 @@ rejectMeInCaps('bar')
 // BAR
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const resolveMeInUpperCase = str => {
+    return new Promise( (res, rej) => {
+        return res(str.toUpperCase());
+    });
+};
+
+resolveMeInUpperCase('foo')
+    .then( result => console.log(result));
+// FOO
+
+resolveMeInUpperCase('bar')
+    .then( result => console.log(result));
+// BAR
+
+/* ------------------------------------------------------------------------------------------------------------------ */

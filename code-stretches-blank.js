@@ -691,3 +691,17 @@ rejectMeInCaps('bar')
 // BAR
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const resolveMeInUpperCase = () => {
+
+};
+
+resolveMeInUpperCase('foo')
+  .then( result => console.log(result));
+// FOO
+
+resolveMeInUpperCase('bar')
+  .then( result => console.log(result));
+// BAR
+
+/* ------------------------------------------------------------------------------------------------------------------ */
