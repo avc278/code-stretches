@@ -978,3 +978,25 @@ resolveMeInUpperCase('bar')
 // BAR
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const onlyEven = (num) => {
+	return new Promise( (res, rej) => {
+        if (num % 2 === 0) {
+            res(num);
+        } else {
+            rej(num);  
+        };
+    });
+};
+
+onlyEven(2)
+    .then(num=> console.log(`resolved with ${num}`));
+
+onlyEven(3)
+    .catch(num=> console.log(`rejected with ${num}`));
+/*
+resolved with 2
+rejected with 3
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */

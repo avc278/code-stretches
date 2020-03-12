@@ -705,3 +705,19 @@ resolveMeInUpperCase('bar')
 // BAR
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const onlyEven = () => {
+
+};
+
+onlyEven(2)
+    .then(num=> console.log(`resolved with ${num}`));
+
+onlyEven(3)
+    .catch(num=> console.log(`rejected with ${num}`));
+/*
+resolved with 2
+rejected with 3
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
