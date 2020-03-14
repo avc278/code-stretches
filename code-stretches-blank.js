@@ -740,4 +740,26 @@ rejected with two
 rejected with 3
 */
 
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+const everyOther = () => {
+
+};
+
+everyOther()
+    .then(()=> console.log('yup'));
+everyOther()
+    .catch(()=> console.log('nope'));
+everyOther()
+    .then(()=> console.log('yes again'));
+everyOther()
+    .catch(()=> console.log('no again'));
+/*
+yup
+nope
+yes again
+no again
+*/
+
 /* ------------------------------------------------------------------------------------------------------------------ */

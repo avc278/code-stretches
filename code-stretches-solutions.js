@@ -1026,3 +1026,41 @@ rejected with 3
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+let counter = 0;
+const everyOther = () => {
+    return new Promise( (res, rej) => {
+        // pass on odd checks, and fail on even checks
+        counter++;
+        if (counter % 2 !== 0) {
+            if (counter === 1) {
+                res('yup');
+            } else {
+                res('yes again');
+            };
+        } else {
+            if (counter === 2) {
+                rej('nope');
+            } else {
+                rej('no again');
+            }
+        };
+    });
+};
+
+everyOther()
+    .then(()=> console.log('yup'));
+everyOther()
+    .catch(()=> console.log('nope'));
+everyOther()
+    .then(()=> console.log('yes again'));
+everyOther()
+    .catch(()=> console.log('no again'));
+/*
+yup
+nope
+yes again
+no again
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
