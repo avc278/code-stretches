@@ -795,3 +795,44 @@ YES 6
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const delayInSeconds = (s, str) => {
+  const ms = s * 1000;
+  return new Promise( (res, rej) => {
+      setTimeout( () => res(str), ms)
+  });
+};
+
+const now = new Date();
+const elapsed = ()=> {
+    console.log(`${ (new Date() - now) /1000} elapsed seconds`);
+};
+delayInSeconds(.6, 'second')
+    .then( d => {
+        console.log(d)
+        elapsed();
+    });
+
+delayInSeconds(.7, 'third')
+    .then( d => {
+        console.log(d)
+        elapsed();
+    });
+
+delayInSeconds(.5, 'first')
+    .then( d => {
+        console.log(d)
+        elapsed();
+    });
+
+// times might differ slightly
+/*
+first
+.503 elapsed seconds
+second
+.601 elapsed seconds
+third
+.706 elapsed seconds
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
