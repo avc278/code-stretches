@@ -796,11 +796,8 @@ YES 6
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
-const delayInSeconds = (s, str) => {
-  const ms = s * 1000;
-  return new Promise( (res, rej) => {
-      setTimeout( () => res(str), ms)
-  });
+const delayInSeconds = () => {
+
 };
 
 const now = new Date();

@@ -1107,8 +1107,11 @@ YES 6
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
-const delayInSeconds = () => {
-
+const delayInSeconds = (s, str) => {
+    const ms = s * 1000;
+    return new Promise( (res, rej) => {
+        setTimeout( () => res(str), ms)
+    });
 };
 
 const now = new Date();
@@ -1144,3 +1147,26 @@ third
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const onlyNumbers = input => {
+    return new Promise( (res, rej) => {
+        if (typeof (input) === "number") {
+            res(input);
+        } else {
+            rej(input);
+        };
+    });
+};
+
+onlyNumbers(2)
+  .then(num=> console.log(`resolved with ${num}`));
+
+onlyNumbers('two')
+  .catch(num=> console.log(`rejected with ${num}`));
+onlyNumbers('3')
+  .catch(num=> console.log(`rejected with ${num}`));
+  /*
+  resolved with 2
+  rejected with two
+  rejected with 3
+  */
