@@ -1159,14 +1159,15 @@ const onlyNumbers = input => {
 };
 
 onlyNumbers(2)
-  .then(num=> console.log(`resolved with ${num}`));
-
+    .then(num=> console.log(`resolved with ${num}`));
 onlyNumbers('two')
-  .catch(num=> console.log(`rejected with ${num}`));
+    .catch(num=> console.log(`rejected with ${num}`));
 onlyNumbers('3')
-  .catch(num=> console.log(`rejected with ${num}`));
-  /*
-  resolved with 2
-  rejected with two
-  rejected with 3
-  */
+    .catch(num=> console.log(`rejected with ${num}`));
+/*
+resolved with 2
+rejected with two
+rejected with 3
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
