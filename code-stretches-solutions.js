@@ -1171,3 +1171,30 @@ rejected with 3
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+class Notifier {
+    constructor() {
+        this.listeners = [];
+    };
+    listen(fn) {
+        this.listeners.push(fn);
+    };
+    broadcast(message) {
+        this.listeners.forEach(listener => listener(message));
+    };
+};
+
+const n = new Notifier();
+n.listen((message)=> console.log(message.toUpperCase()));
+n.broadcast('hello');
+n.broadcast('world');
+n.listen((message)=> console.log(message.toLowerCase()));
+n.broadcast('hello again!');
+/*
+HELLO
+WORLD
+HELLO AGAIN!
+hello again!
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
