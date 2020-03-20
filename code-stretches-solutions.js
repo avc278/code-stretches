@@ -1172,6 +1172,8 @@ rejected with 3
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
+// Notifier - an event listener
+// write the Notifier constructor / class
 class Notifier {
     constructor() {
         this.listeners = [];
@@ -1196,5 +1198,116 @@ WORLD
 HELLO AGAIN!
 hello again!
 */
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// Notifier with Unsubscribe
+// Fix Notifier so that the only console.log is HELLO
+class Notifier{
+    constructor(){
+      this.listeners = [];
+    };
+    listen(fn){
+      this.listeners.push(fn);
+      return ()=> {
+        this.listeners = [];
+      }
+    };
+    broadcast(message){
+      this.listeners.forEach( listener => listener(message));
+    };
+};
+
+const n = new Notifier();
+const unsubscribe = n.listen((message)=> console.log(message.toUpperCase()));
+n.broadcast('hello');
+unsubscribe();
+n.broadcast('world');
+/*
+HELLO
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// notifyMeAbout - event emitters
+// Finish the notify me object
+const notifier = {
+    listeners: {}
+};
+
+notifier.notifyMeAbout = function(cat, fn) {
+    this.listeners[cat] = fn;
+};
+notifier.broadcast = function(cat, message) {
+    if (this.listeners[cat]) {
+        this.listeners[cat](message);
+    };
+};
+notifier.notifyMeAbout('sports', (message)=> {
+  console.log(`sports ${message}`);
+});
+
+notifier.notifyMeAbout('cooking', (message)=> {
+  console.log(`cooking ${message}`);
+});
+
+notifier.broadcast('sports', 'The Mets Win');
+notifier.broadcast('cooking', 'Here is new pasta recipe!');
+notifier.broadcast('politics', 'The election results are in!');
+/*
+sports The Mets Win
+cooking Here is new pasta recipe!
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// subscribeAll
+// Fix the notifier so that a subscriber can subscribe to all messages
+const notifier = {
+    all: [],
+    listeners: {},
+    subscribe: function(type, fn){
+        this.listeners[type] = this.listeners[type] || []; 
+        const list = this.listeners[type];
+        list.push(fn);
+    },
+    subscribeAll: function(fn){
+        this.all.push(fn);
+    },
+    broadcast: function(type, message){
+        let list = this.listeners[type] || [];
+        list.forEach( fn => fn(message));
+        this.all.forEach( fn => fn(message));
+    }
+};
+
+notifier.subscribe('SPORTS', (message)=> {
+  console.log(`SPORTS SUBSCRIBER-${message}`);
+});
+
+notifier.subscribeAll((message)=> console.log(`ALL SUBSCRIBER- ${message}`));
+
+notifier.broadcast('SPORTS', 'sports message')
+notifier.broadcast('COOKING', 'cooking message')
+
+/*
+SPORTS SUBSCRIBER-sports message
+ALL SUBSCRIBER- sports message
+ALL SUBSCRIBER- cooking message
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// context question
+// fix the foo object so that foo.bar() logs 'quq'
+const foo = {
+    bar: function(){
+        console.log(this.bazz);
+    },
+    bazz: 'quq' 
+};
+
+foo.bar();
+//quq
 
 /* ------------------------------------------------------------------------------------------------------------------ */
