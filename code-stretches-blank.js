@@ -1006,3 +1006,31 @@ Message: LOUD MESSAGE
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const fsa = new Slack({ workspace: 'FSA'});
+const google = new Slack({ workspace: 'Google'});
+
+google.sub('#jokes', (message)=> console.log(message));
+
+google.pub('#jokes', 'What do you call a grandfather clock? An old timer!')
+
+fsa.sub('2001-FLEX', (message)=> {
+    console.log(message)
+});
+
+fsa.sub('#general', (message)=> {
+    console.log(message)
+});
+
+fsa.pub('2001-FLEX', 'stretch is open');
+fsa.pub('#general', 'hello there!');
+fsa.pub('#general', 'hello there again!!');
+
+/*
+Google - #jokes - What do you call a grandfather clock? An old timer!
+FSA - 2001-FLEX - stretch is open
+FSA - #general - hello there!
+FSA - #general - hello there again!!
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
