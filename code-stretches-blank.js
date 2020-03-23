@@ -968,3 +968,41 @@ foo.bar();
 //quq
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const unsubscribe1 = EE.listen((message)=> {
+    console.log(`listener 1 ${message}`)
+});
+const unsubscribe2 = EE.listen((message)=> {
+    console.log(`listener 2 ${message}`)
+});
+EE.broadcast('how ya doin?');
+EE.broadcast('still listening?');
+unsubscribe1();
+EE.broadcast('how bout now?');
+unsubscribe2();
+EE.broadcast('anyone out there?');
+/*
+listener 1 how ya doin?l
+istener 2 how ya doin?
+listener 1 still listening?
+listener 2 still listening?
+listener 2 how bout now?
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+const slackChannel = new SlackChannel('FSA');
+
+slackChannel.listen((message)=> {
+    console.log(`Message: ${message}`);
+});
+
+slackChannel.broadcast('Here is a regular message');
+slackChannel.broadcastLoud('loud message');
+/*
+Message: Welcome to FSA channel
+Message: Here is a regular message
+Message: LOUD MESSAGE
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */

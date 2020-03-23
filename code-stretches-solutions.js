@@ -1311,3 +1311,70 @@ foo.bar();
 //quq
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+const EE = {
+    listeners: [],
+    listen: function(fn) {
+        this.listeners.push(fn);
+            return function(){
+                EE.listeners = EE.listeners.filter( listener => listener !== fn);
+            };
+    },
+    broadcast: function(message) {
+        this.listeners.forEach( listener => listener(message));
+    }
+};
+
+const unsubscribe1 = EE.listen((message)=> {
+  console.log(`listener 1 ${message}`)
+});
+const unsubscribe2 = EE.listen((message)=> {
+  console.log(`listener 2 ${message}`)
+});
+EE.broadcast('how ya doin?');
+EE.broadcast('still listening?');
+unsubscribe1();
+EE.broadcast('how bout now?');
+unsubscribe2();
+EE.broadcast('anyone out there?');
+/*
+listener 1 how ya doin?l
+istener 2 how ya doin?
+listener 1 still listening?
+listener 2 still listening?
+listener 2 how bout now?
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+class SlackChannel {
+    constructor(channelName) {
+        this.listeners = []
+        console.log(`Message: Welcome to ${channelName} channel`)
+    }
+    listen(fn) {
+        this.listeners.push(fn);
+    }
+    broadcast(message){
+        this.listeners.forEach( listener => listener(message) );
+    }
+    broadcastLoud(message){
+        this.listeners.forEach( listener => listener(message.toUpperCase()) );
+    }
+}
+
+const slackChannel = new SlackChannel('FSA');
+
+slackChannel.listen((message)=> {
+  console.log(`Message: ${message}`);
+});
+
+slackChannel.broadcast('Here is a regular message');
+slackChannel.broadcastLoud('loud message');
+/*
+Message: Welcome to FSA channel
+Message: Here is a regular message
+Message: LOUD MESSAGE
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
