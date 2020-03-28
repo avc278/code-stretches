@@ -1699,3 +1699,53 @@ TO LUCY: curly says whats up!
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// Chat with hints
+// Chat is almost complete
+// finish it up
+class Chat{
+    constructor(){
+        this.listeners = {};
+    }
+    join(str, fn){
+        Object.values(this.listeners).forEach(listener => listener(`${str} has joined chat!`));
+        this.listeners[str] = fn;
+        return {
+            talk: (message)=> {
+                Object.values(this.listeners)
+                    .filter(listener => listener !== fn)
+                    .forEach( listener => listener(`${str} says ${message}`) )
+            }
+        };
+    }
+}
+const chat = new Chat();
+const prof = chat.join('prof', (message)=> {
+    console.log(`TO PROF: ${message}`);
+});
+
+const lucy = chat.join('lucy', (message)=> {
+    console.log(`TO LUCY: ${message}`);
+});
+
+const curly = chat.join('curly', (message)=> {
+    console.log(`TO CURLY: ${message}`);
+});
+
+prof.talk('hi');
+lucy.talk('hello');
+curly.talk('whats up!');
+
+/*
+TO PROF: lucy has joined chat!
+TO PROF: curly has joined chat!
+TO LUCY: curly has joined chat!
+TO LUCY: prof says hi
+TO CURLY: prof says hi
+TO PROF: lucy says hello
+TO CURLY: lucy says hello
+TO PROF: curly says whats up!
+TO LUCY: curly says whats up!
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
