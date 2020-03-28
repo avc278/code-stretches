@@ -1138,3 +1138,91 @@ console.log(stateHolder.getState());
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// StateHolder - DRY
+// The StateHolder code is not DRY
+// write a broadcast method which will help dry out the code
+class StateHolder{
+    constructor(start){
+        this.state = start;
+        this.listeners = [];
+    }
+    getState(){
+        return this.state;
+    }
+    sub(listener){
+        this.listeners.push(listener);
+    }
+    increase(value){
+        this.state += value; 
+        this.listeners.forEach( listener => listener(this.state));
+    }
+    decrease(value){
+        this.state -= value; 
+        this.listeners.forEach( listener => listener(this.state));
+    }
+}
+const stateHolder = new StateHolder(2);
+
+stateHolder.sub((state)=> {
+    console.log(state);
+})
+stateHolder.increase(7);
+stateHolder.decrease(3);
+stateHolder.decrease(6);
+stateHolder.increase(2);
+
+console.log(stateHolder.getState());
+/*
+9
+6
+0
+2
+2
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// StateHolder - Unsubscribe
+// allow a subscriber to unsubscribe
+class StateHolder{
+    constructor(start){
+        this.state = start;
+        this.listeners = [];
+    }
+    getState(){
+        return this.state;
+    }
+    sub(listener){
+        this.listeners.push(listener);
+    }
+    broadcast(){
+        this.listeners.forEach( listener => listener(this.state));
+    }
+    increase(value){
+        this.state += value;
+        this.broadcast();
+    }
+    decrease(value){
+        this.state -= value;
+        this.broadcast();
+    }
+}
+const stateHolder = new StateHolder(2);
+
+const unsub = stateHolder.sub((state)=> {
+    console.log(state);
+})
+stateHolder.increase(7);
+stateHolder.decrease(3);
+stateHolder.decrease(6);
+unsub();
+stateHolder.increase(2);
+
+/*
+9
+6
+0
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
