@@ -1080,3 +1080,61 @@ FSA - #general - hello there!
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// StateHolder
+// write StateHolder
+const stateHolder = new StateHolder(2);
+
+stateHolder.sub((state)=> {
+  console.log(state);
+})
+stateHolder.increase(7);
+stateHolder.increase(2);
+
+console.log(stateHolder.getState());
+/*
+9
+11
+11
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// StateHolder - decrease
+// add the decrease method to StateHolder
+class StateHolder{
+    constructor(start){
+        this.state = start;
+        this.listeners = [];
+    }
+    getState(){
+        return this.state;
+    }
+    sub(listener){
+        this.listeners.push(listener);
+    }
+    increase(value){
+        this.state += value; 
+        this.listeners.forEach( listener => listener(this.state));
+    }
+}
+const stateHolder = new StateHolder(2);
+
+stateHolder.sub((state)=> {
+    console.log(state);
+})
+stateHolder.increase(7);
+stateHolder.decrease(3);
+stateHolder.decrease(6);
+stateHolder.increase(2);
+
+console.log(stateHolder.getState());
+/*
+9
+6
+0
+2
+2
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */

@@ -1471,3 +1471,89 @@ FSA - #general - hello there!
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// NOTE: A solution, but not the best solution. A better one is given as the prompt in the next code stretch.
+// StateHolder
+// write StateHolder
+class StateHolder {
+    constructor(num) {
+        this.initialNum = num;
+        this.deltaNums = [];
+        this.listeners = [];
+    }
+    sub(fn) {
+        this.listeners.push(fn)
+    }
+    increase(num) {
+        if (this.deltaNums.length === 0) {
+            this.deltaNums.push(this.initialNum + num)
+        } else {
+            this.deltaNums.push(this.deltaNums[this.deltaNums.length - 1] + num)
+        }
+    }
+    getState() {
+        this.deltaNums.forEach( num => this.listeners.forEach( listener => listener(num) ) );
+        const latestNumber = this.deltaNums[this.deltaNums.length - 1];
+        this.listeners.forEach( listener => listener(latestNumber) );
+    }
+}
+
+const stateHolder = new StateHolder(2);
+
+stateHolder.sub((state)=> {
+    console.log(state);
+})
+stateHolder.increase(7);
+stateHolder.increase(2);
+
+console.log(stateHolder.getState());
+/*
+9
+11
+11
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+// StateHolder - decrease
+// add the decrease method to StateHolder
+class StateHolder{
+    constructor(start){
+        this.state = start;
+        this.listeners = [];
+    }
+    getState(){
+        return this.state;
+    }
+    sub(listener){
+        this.listeners.push(listener);
+    }
+    increase(value){
+        this.state += value; 
+        this.listeners.forEach( listener => listener(this.state));
+    }
+    decrease(value){
+        this.state -= value;
+        this.listeners.forEach( listener => listener(this.state));
+    }
+}
+const stateHolder = new StateHolder(2);
+  
+stateHolder.sub((state)=> {
+    console.log(state);
+})
+stateHolder.increase(7);
+stateHolder.decrease(3);
+stateHolder.decrease(6);
+stateHolder.increase(2);
+
+console.log(stateHolder.getState());
+/*
+9
+6
+0
+2
+2
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
