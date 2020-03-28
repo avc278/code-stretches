@@ -1226,3 +1226,36 @@ stateHolder.increase(2);
 */
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+// Chat
+// write the Chat contructor
+const chat = new Chat();
+const prof = chat.join('prof', (message)=> {
+    console.log(`TO PROF: ${message}`);
+});
+
+const lucy = chat.join('lucy', (message)=> {
+    console.log(`TO LUCY: ${message}`);
+});
+
+const curly = chat.join('curly', (message)=> {
+     console.log(`TO CURLY: ${message}`);
+});
+
+prof.talk('hi');
+lucy.talk('hello');
+curly.talk('whats up!');
+
+/*
+TO PROF: lucy has joined chat!
+TO PROF: curly has joined chat!
+TO LUCY: curly has joined chat!
+TO LUCY: prof says hi
+TO CURLY: prof says hi
+TO PROF: lucy says hello
+TO CURLY: lucy says hello
+TO PROF: curly says whats up!
+TO LUCY: curly says whats up!
+*/
+
+/* ------------------------------------------------------------------------------------------------------------------ */
